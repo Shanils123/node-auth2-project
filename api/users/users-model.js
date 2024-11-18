@@ -2,12 +2,11 @@ const db = require('../../data/db-config.js');
 
 function find() {
   return db('users')
+  ,join('roles', 'users.role_id', 'roles_role_id')
+  .select('user_id', 'username', 'role_name')
 }
 
 function findBy(filter) {
-  return db('users')
-    ,join('roles', 'users.role_id', 'roles_role_id')
-    .select('user_id', 'username', 'role_name')
   /**
     You will need to join two tables.
     Resolves to an ARRAY with all users that match the filter condition.
