@@ -15,10 +15,9 @@ function findBy(filter) {
 
 function findById(user_id) {
   return db('users')
-  .select('users.user_id', 'users.username', 'roles.role_name')
-  .join('roles', 'users.role_id', 'roles.role_id')
-  .where('users.user_id', user_id)
-  .first();
+  ,join('roles', 'users.role_id', 'roles_role_id')
+  .select('user_id', 'username', 'password', 'role_name')
+  .where('users.user_id', user_id).first()
   /**
     You will need to join two tables.
     Resolves to the user with the given user_id.
